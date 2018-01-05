@@ -7,8 +7,10 @@ describe "When a user visits a machines page" do
         it "sees the vending machines attributes" do
           owner = Owner.create!(name: "Jeff")
           machine = Machine.create!(location: "Turing", owner: owner)
-          snack1 = Snack.create!(name: "Chips", price: 1, machine: machine)
-          snack2 = Snack.create!(name: "Cookies", price: 3, machine: machine)
+          snack1 = Snack.create!(name: "Chips", price: 1)
+          snack2 = Snack.create!(name: "Cookies", price: 3)
+          snack_machine = SnackMachine.create!(machine: machine, snack: snack1)
+          snack_machine = SnackMachine.create!(machine: machine, snack: snack2)
 
           visit machine_path(machine)
 
